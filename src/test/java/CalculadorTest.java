@@ -10,6 +10,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.TestInfo;
 
 /**
  *
@@ -22,23 +23,23 @@ public class CalculadorTest {
     @BeforeAll
     public static void beforeClass() {
         cal = new Calculador();
-        System.out.println("Bienvenido, iniciando pruebas");
+        System.out.println("Bienvenido, iniciando pruebas de Calculador");
     }
     
     @AfterAll
-    public void afterClass() {
-        System.out.println("Terminando las pruebas");
+    public static void afterClass() {
+        System.out.println("Terminando las pruebas de Calculador");
     }
     
     //Se ejecuta antes de cada test
     @BeforeEach
-    public void before() {
-        Thread.currentThread().getStackTrace()[1].getMethodName();
+    public void before(TestInfo testInfo) {
+        System.out.println("Ejecutando prueba: " + testInfo.getTestMethod().get().getName());
     }
     
     @AfterEach
-    public void after() {
-        System.out.println("Test finalizado");
+    public void after(TestInfo testInfo) {
+        System.out.println(testInfo.getTestMethod().get().getName() + " finalizado");
     }
     
     @Test
