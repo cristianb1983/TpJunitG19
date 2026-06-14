@@ -23,12 +23,12 @@ public class CalculadorTest {
     @BeforeAll
     public static void beforeClass() {
         cal = new Calculador();
-        System.out.println("Bienvenido, iniciando pruebas de Calculador");
+        System.out.println("Bienvenido, iniciando pruebas de CalculadorTest");
     }
     
     @AfterAll
     public static void afterClass() {
-        System.out.println("Terminando las pruebas de Calculador");
+        System.out.println("Terminando las pruebas de CalculadorTest");
     }
     
     //Se ejecuta antes de cada test

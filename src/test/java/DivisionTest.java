@@ -1,9 +1,11 @@
+import crb.tpjunitg19.Calculador;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.TestInfo;
 
 /**
  *
@@ -11,22 +13,27 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class DivisionTest {
     
-    public DivisionTest() {
-    }
-    
+    static Calculador cal;
+    //Se ejecuta una sola vez antes de todas las pruebas
     @BeforeAll
-    public static void setUpClass() {
+    public static void beforeClass() {
+        cal = new Calculador();
+        System.out.println("Bienvenido, iniciando pruebas de DivisionTest");
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public static void afterClass() {
+        System.out.println("Terminando las pruebas de DivisionTest");
     }
     
+    //Se ejecuta antes de cada test
     @BeforeEach
-    public void setUp() {
+    public void before(TestInfo testInfo) {
+        System.out.println("Ejecutando prueba: " + testInfo.getTestMethod().get().getName());
     }
     
     @AfterEach
-    public void tearDown() {
+    public void after(TestInfo testInfo) {
+        System.out.println(testInfo.getTestMethod().get().getName() + " finalizado");
     }
 }
