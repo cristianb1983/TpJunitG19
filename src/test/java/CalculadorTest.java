@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 
+import crb.tpjunitg19.Calculador;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,28 +17,39 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class CalculadorTest {
     
-    public CalculadorTest() {
-    }
-    
+    static Calculador cal;
+    //Se ejecuta una sola vez antes de todas las pruebas
     @BeforeAll
-    public static void setUpClass() {
+    public static void beforeClass() {
+        cal = new Calculador();
+        System.out.println("Bienvenido, iniciando pruebas");
     }
     
     @AfterAll
-    public static void tearDownClass() {
+    public void afterClass() {
+        System.out.println("Terminando las pruebas");
     }
     
+    //Se ejecuta antes de cada test
     @BeforeEach
-    public void setUp() {
+    public void before() {
+        Thread.currentThread().getStackTrace()[1].getMethodName();
     }
     
     @AfterEach
-    public void tearDown() {
+    public void after() {
+        System.out.println("Test finalizado");
     }
-
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+    
+    @Test
+    public void testSuma() {
+        double resultado = cal.suma(2.2, 2.2);
+        assertEquals(4.4, resultado, 0.001);
+    }
+    
+    @Test
+    public void testResta() {
+        double resultado = cal.resta(5.5, 2.2);
+        assertEquals(3.3, resultado, 0.001);
+    }  
 }
