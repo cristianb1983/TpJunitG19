@@ -1,3 +1,6 @@
+package crb.tpjunitg19;
+
+
 import crb.tpjunitg19.Calculador;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -35,5 +38,14 @@ public class DivisionTest {
     @AfterEach
     public void after(TestInfo testInfo) {
         System.out.println(testInfo.getTestMethod().get().getName() + " finalizado");
+    }
+    
+     @Test
+    public void testDivisionPorCero() {
+        Calculador calc = new Calculador();
+        
+        assertThrows(ArithmeticException.class, () -> {
+            calc.dividir(10, 0);
+        });
     }
 }

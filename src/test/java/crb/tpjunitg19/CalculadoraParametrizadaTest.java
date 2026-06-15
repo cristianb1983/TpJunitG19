@@ -1,3 +1,6 @@
+package crb.tpjunitg19;
+
+
 import crb.tpjunitg19.Calculador;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.AfterAll;
@@ -6,6 +9,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.TestInfo;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 /**
  *
@@ -35,5 +40,16 @@ public class CalculadoraParametrizadaTest {
     @AfterEach
     public void after(TestInfo testInfo) {
         System.out.println(testInfo.getTestMethod().get().getName() + " finalizado");
+    }
+    
+     @ParameterizedTest
+    @CsvSource({
+        "8, 7, 15",   // (8,7) -> 15
+        "2, 0, 2",    // (2,0) -> 2
+        "10, -1, 9"   // (10,-1) -> 9
+    })
+    public void testSumarParametrizado(double a, double b, double resultadoEsperado) {
+        Calculador calc = new Calculador();
+        assertEquals(resultadoEsperado, calc.suma(a, b), 0.001);
     }
 }
